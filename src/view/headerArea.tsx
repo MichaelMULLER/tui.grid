@@ -12,6 +12,7 @@ import { ComplexHeader } from './complexHeader';
 import { HeaderCheckbox } from './headerCheckbox';
 import { SortingButton } from './sortingButton';
 import { SortingOrder } from './sortingOrder';
+import { FilterButton } from './filterButton';
 
 interface OwnProps {
   side: Side;
@@ -106,9 +107,17 @@ class HeaderAreaComp extends Component<Props> {
           ) : (
             <tbody>
               <tr style={headerHeightStyle} onDblClick={this.handleDblClick}>
+                {console.log(columns[0])}
                 {columns.map(
                   (
-                    { name, header, sortable, headerAlign: textAlign, headerVAlign: verticalAlign },
+                    {
+                      name,
+                      header,
+                      sortable,
+                      headerAlign: textAlign,
+                      headerVAlign: verticalAlign,
+                      filter
+                    },
                     index
                   ) => (
                     <th
@@ -125,6 +134,7 @@ class HeaderAreaComp extends Component<Props> {
                       {isCheckboxColumn(name) ? <HeaderCheckbox /> : header}
                       {!!sortable && <SortingButton columnName={name} />}
                       {!!sortable && <SortingOrder columnName={name} />}
+                      <FilterButton />
                     </th>
                   )
                 )}
