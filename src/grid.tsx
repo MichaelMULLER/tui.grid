@@ -1430,7 +1430,7 @@ export default class Grid {
   public filter(
     columnName: string,
     conditionFn: Function,
-    state: FilterState[] | number[],
+    state: FilterState[],
     filterIndex?: number
   ) {
     this.dispatch('filter', columnName, conditionFn, state, filterIndex);
