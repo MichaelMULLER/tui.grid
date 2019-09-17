@@ -638,7 +638,7 @@ export default class Grid {
    * @param {string} value - The value of editing result
    */
   public finishEditing(rowKey: RowKey, columnName: string, value: string) {
-    const { columns } = this.store.data.sortOptions;
+    const { columns } = this.store.data.sortState;
     this.dispatch('setValue', rowKey, columnName, value);
 
     const index = findPropIndex('columnName', columnName, columns);
@@ -888,7 +888,7 @@ export default class Grid {
    * @returns {{columns: [{columnName: string, ascending: boolean}], useClient: boolean}} Sorted column's state
    */
   public getSortState() {
-    return this.store.data.sortOptions;
+    return this.store.data.sortState;
   }
 
   /**
